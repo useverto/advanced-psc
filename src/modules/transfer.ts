@@ -45,10 +45,10 @@ export default function Transfer(
   balances[caller] -= qty;
 
   if (target in balances) {
-    // Wallet already exists in state, add new tokens
+    // wallet already exists in state, add new tokens
     balances[target] += qty;
   } else {
-    // Wallet is new, set starting balance
+    // wallet is new, set starting balance
     balances[target] = qty;
   }
 
