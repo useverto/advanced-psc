@@ -85,6 +85,12 @@ export interface BalanceInterface {
 
 export interface UnlockedBalanceInterface extends BalanceInterface {}
 
+export interface LockInterface {
+  function: "lock";
+  qty: number;
+  lockLength: number;
+}
+
 // FCP inputs
 
 export interface InvokeInterface {

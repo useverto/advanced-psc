@@ -21,6 +21,7 @@ export default function UnlockedBalance(
   const balances = state.balances;
   let balance = 0;
 
+  // get balance from balances object
   if (target in balances) {
     balance = balances[target];
   }

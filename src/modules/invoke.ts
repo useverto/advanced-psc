@@ -1,9 +1,9 @@
 import { ActionInterface, StateInterface, InvokeInterface } from "../faces";
 
-export const Invoke = async (
+export default async function Invoke(
   state: StateInterface,
   action: ActionInterface
-): Promise<StateInterface> => {
+): Promise<StateInterface> {
   const input: InvokeInterface = action.input;
 
   // Ensure that the interaction has an invocation object
@@ -20,4 +20,4 @@ export const Invoke = async (
   });
 
   return state;
-};
+}
