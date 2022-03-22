@@ -1,11 +1,15 @@
-import { ActionInterface, StateInterface } from "../faces";
+import {
+  ActionInterface,
+  StateInterface,
+  TransferLockedInterface
+} from "../faces";
 import { isAddress } from "../utils";
 
 export default function TransferLocked(
   state: StateInterface,
   action: ActionInterface
 ): StateInterface {
-  const input = action.input;
+  const input: TransferLockedInterface = action.input;
   const caller = action.caller;
 
   // check if there is a target and if it is a valid Arweave address

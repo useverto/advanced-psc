@@ -2,23 +2,24 @@
 export interface StateInterface {
   name: string;
   ticker: string;
+
   balances: BalancesInterface;
   vault: VaultInterface;
+
   votes: VoteInterface[];
   roles: RoleInterface;
+
   settings: [string, any][];
+
+  invocations: string[];
+  foreignCalls: ForeignCallInterface[];
 }
 
 // interaction interface
 export interface ActionInterface {
-  input: InputInterface;
+  input: any;
   caller: string;
 }
-
-// handle function return type
-export type HandleReturn = { state: StateInterface } | { result: any };
-
-// functions
 
 export interface RoleInterface {
   [key: string]: string;
@@ -36,11 +37,6 @@ export interface VaultParamsInterface {
   balance: number;
   start: number;
   end: number;
-}
-
-export interface InputInterface extends VoteInterface {
-  function: GetFunctionType | SetFunctionType;
-  cast?: string;
 }
 
 export interface VoteInterface {
@@ -61,14 +57,57 @@ export interface VoteInterface {
   lockLength?: number;
 }
 
+// inputs
+
+export interface TransferInterface {
+  function: "transfer";
+  target: string;
+  qty: number;
+}
+
+export interface TransferLockedInterface {
+  function: "transferLocked";
+  target: string;
+  qty: number;
+  lockLength: number;
+}
+
 export interface ResultInterface {
   target: string;
   balance: number;
   role: string;
 }
 
+// FCP inputs
+
+export interface InvokeInterface {
+  function: "invoke";
+  foreignContract: string;
+  invocation: InvocationInterface;
+}
+
+export interface ReadOutboxInterface {
+  function: "readOutbox";
+  contract: string;
+  id: string;
+}
+
+// FCP state interfaces
+
+export interface ForeignCallInterface {
+  txID: string;
+  contract: string;
+  input: InvocationInterface;
+}
+
+export interface InvocationInterface {
+  function: string;
+  [key: string | number]: any;
+}
+
 // vote statuses
 export type VoteStatus = "active" | "quorumFailed" | "passed" | "failed";
+
 // vote types
 export type VoteType =
   | "mint"
@@ -76,20 +115,3 @@ export type VoteType =
   | "burnVault"
   | "indicative"
   | "set";
-// functions that return a result
-export type GetFunctionType =
-  | "balance"
-  | "unlockedBalance"
-  | "vaultBalance"
-  | "role";
-// fnctions that only modify the state
-export type SetFunctionType =
-  | "transfer"
-  | "transferLocked"
-  | "vote"
-  | "propose"
-  | "finalize"
-  | "lock"
-  | "increaseVault"
-  | "unlock"
-  | "extend";

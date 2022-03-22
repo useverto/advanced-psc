@@ -13,7 +13,7 @@ const outfile = "./dist/contract.js";
 
   let src = fs.readFileSync(outfile).toString();
 
-  src = src.replace("function handle", "export function handle");
+  src = src.replace("async function handle", "export async function handle");
   src = src.replace("export {\n  handle\n};\n", "");
 
   fs.writeFileSync(outfile, src);

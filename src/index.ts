@@ -1,12 +1,9 @@
-import { ActionInterface, HandleReturn, StateInterface } from "./faces";
+import { ActionInterface, StateInterface } from "./faces";
 
 import Transfer from "./modules/transfer";
 import TransferLocked from "./modules/transferLocked";
 
-export function handle(
-  state: StateInterface,
-  action: ActionInterface
-): HandleReturn {
+export async function handle(state: StateInterface, action: ActionInterface) {
   // parse function
   switch (action.input.function) {
     case "transfer":
@@ -14,6 +11,8 @@ export function handle(
 
     case "transferLocked":
       return { state: TransferLocked(state, action) };
+
+    // FCP
 
     default:
       throw new ContractError(`Invalid function: "${action.input.function}"`);
