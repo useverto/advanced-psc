@@ -83,6 +83,8 @@ export interface BalanceInterface {
   target?: string;
 }
 
+export interface UnlockedBalanceInterface extends BalanceInterface {}
+
 // FCP inputs
 
 export interface InvokeInterface {
