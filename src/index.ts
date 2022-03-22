@@ -2,6 +2,7 @@ import { ActionInterface, StateInterface } from "./faces";
 
 import Transfer from "./modules/transfer";
 import TransferLocked from "./modules/transferLocked";
+import { Balance } from "./modules/balance";
 
 export async function handle(state: StateInterface, action: ActionInterface) {
   // parse function
@@ -11,6 +12,9 @@ export async function handle(state: StateInterface, action: ActionInterface) {
 
     case "transferLocked":
       return { state: TransferLocked(state, action) };
+
+    case "balance":
+      return { result: Balance(state, action) };
 
     // FCP
 

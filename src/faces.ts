@@ -78,6 +78,11 @@ export interface ResultInterface {
   role: string;
 }
 
+export interface BalanceInterface {
+  function: "balance";
+  target?: string;
+}
+
 // FCP inputs
 
 export interface InvokeInterface {
