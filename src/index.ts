@@ -8,6 +8,7 @@ import Lock from "./modules/lock";
 import ReadOutbox from "./modules/readOutbox";
 import Invoke from "./modules/invoke";
 import IncreaseVault from "./modules/increaseVault";
+import Unlock from "./modules/unlock";
 
 export async function handle(state: StateInterface, action: ActionInterface) {
   // parse function
@@ -32,6 +33,9 @@ export async function handle(state: StateInterface, action: ActionInterface) {
 
     case "increaseVault":
       return { state: IncreaseVault(state, action) };
+
+    case "unlock":
+      return { state: Unlock(state, action) };
 
     // FCP
     case "readOutbox":
