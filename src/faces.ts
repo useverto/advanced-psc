@@ -117,6 +117,11 @@ export interface VoteActionInterface {
   cast: string;
 }
 
+export interface FinalizeInterface {
+  function: "finalize";
+  id: string;
+}
+
 // FCP inputs
 
 export interface InvokeInterface {
