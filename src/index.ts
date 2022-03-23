@@ -12,6 +12,8 @@ import Unlock from "./modules/unlock";
 import VaultBalance from "./modules/vaultBalance";
 import Propose from "./modules/propose";
 import Vote from "./modules/vote";
+import Finalize from "./modules/finalize";
+import Role from "./modules/role";
 
 export async function handle(state: StateInterface, action: ActionInterface) {
   // parse function
@@ -49,6 +51,12 @@ export async function handle(state: StateInterface, action: ActionInterface) {
 
     case "vote":
       return { state: Vote(state, action) };
+
+    case "finalize":
+      return { state: Finalize(state, action) };
+
+    case "role":
+      return { result: Role(state, action) };
 
     // FCP
     case "readOutbox":

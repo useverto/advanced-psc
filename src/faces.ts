@@ -7,7 +7,9 @@ export interface StateInterface {
   vault: VaultInterface;
 
   votes: VoteInterface[];
-  roles: RoleInterface;
+  roles: {
+    [key: string]: string;
+  };
 
   settings: [string, any][];
 
@@ -19,10 +21,6 @@ export interface StateInterface {
 export interface ActionInterface {
   input: any;
   caller: string;
-}
-
-export interface RoleInterface {
-  [key: string]: string;
 }
 
 export interface BalancesInterface {
@@ -120,6 +118,11 @@ export interface VoteActionInterface {
 export interface FinalizeInterface {
   function: "finalize";
   id: string;
+}
+
+export interface RoleInterface {
+  function: "role";
+  target: string;
 }
 
 // FCP inputs
