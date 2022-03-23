@@ -23,8 +23,8 @@ export default function IncreaseVault(
 
   // validate lock lenght
   ContractAssert(
-    lockLength < settings.get("lockMinLength") &&
-      lockLength > settings.get("lockMaxLength"),
+    lockLength > settings.get("lockMinLength") &&
+      lockLength < settings.get("lockMaxLength"),
     `Input for "lockLength" is out of range, must be between ${settings.get(
       "lockMinLength"
     )} and ${settings.get("lockMaxLength")}`
