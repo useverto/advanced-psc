@@ -9,6 +9,7 @@ import ReadOutbox from "./modules/readOutbox";
 import Invoke from "./modules/invoke";
 import IncreaseVault from "./modules/increaseVault";
 import Unlock from "./modules/unlock";
+import VaultBalance from "./modules/vaultBalance";
 
 export async function handle(state: StateInterface, action: ActionInterface) {
   // parse function
@@ -37,6 +38,10 @@ export async function handle(state: StateInterface, action: ActionInterface) {
     case "unlock":
       return { state: Unlock(state, action) };
 
+    // vault
+    case "vaultBalance":
+      return { result: VaultBalance(state, action) };
+
     // FCP
     case "readOutbox":
       return { state: await ReadOutbox(state, action) };
@@ -44,6 +49,7 @@ export async function handle(state: StateInterface, action: ActionInterface) {
     case "invoke":
       return { state: await Invoke(state, action) };
 
+    // return if function was not found
     default:
       throw new ContractError(`Invalid function: "${action.input.function}"`);
   }

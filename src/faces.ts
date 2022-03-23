@@ -97,6 +97,8 @@ export interface IncreaseVaultInterface {
   lockLength: number;
 }
 
+export interface VaultBalanceInterface extends BalanceInterface {}
+
 // FCP inputs
 
 export interface InvokeInterface {
