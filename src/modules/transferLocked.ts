@@ -3,7 +3,7 @@ import {
   StateInterface,
   TransferLockedInterface
 } from "../faces";
-import { isAddress } from "../utils";
+import { isAddress, RESTRICT_TO_INTEGER } from "../utils";
 
 export default function TransferLocked(
   state: StateInterface,
@@ -25,7 +25,7 @@ export default function TransferLocked(
   const qty = +input.qty;
 
   ContractAssert(
-    Number.isInteger(qty),
+    Number.isInteger(qty) || !RESTRICT_TO_INTEGER,
     'Invalid value for "qty". Must be an integer'
   );
 

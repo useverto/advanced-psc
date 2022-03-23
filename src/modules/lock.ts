@@ -1,4 +1,5 @@
 import { ActionInterface, StateInterface, LockInterface } from "../faces";
+import { RESTRICT_TO_INTEGER } from "../utils";
 
 export default function Lock(state: StateInterface, action: ActionInterface) {
   const input: LockInterface = action.input;
@@ -8,7 +9,7 @@ export default function Lock(state: StateInterface, action: ActionInterface) {
   const qty = +input.qty;
 
   ContractAssert(
-    Number.isInteger(qty),
+    Number.isInteger(qty) || !RESTRICT_TO_INTEGER,
     'Invalid value for "qty". Must be an integer'
   );
 

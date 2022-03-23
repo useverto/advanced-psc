@@ -3,6 +3,7 @@ import {
   StateInterface,
   IncreaseVaultInterface
 } from "../faces";
+import { RESTRICT_TO_INTEGER } from "../utils";
 
 export default function IncreaseVault(
   state: StateInterface,
@@ -16,7 +17,7 @@ export default function IncreaseVault(
   const settings: Map<string, any> = new Map(state.settings);
 
   ContractAssert(
-    Number.isInteger(lockLength),
+    Number.isInteger(lockLength) || !RESTRICT_TO_INTEGER,
     'Invalid value for "lockLength". Must be an integer'
   );
 

@@ -1,5 +1,5 @@
 import { ActionInterface, StateInterface, TransferInterface } from "../faces";
-import { isAddress } from "../utils";
+import { isAddress, RESTRICT_TO_INTEGER } from "../utils";
 
 export default function Transfer(
   state: StateInterface,
@@ -25,7 +25,7 @@ export default function Transfer(
   const qty = input.qty;
 
   ContractAssert(
-    Number.isInteger(qty),
+    Number.isInteger(qty) || !RESTRICT_TO_INTEGER,
     'Invalid value for "qty". Must be an integer'
   );
 
