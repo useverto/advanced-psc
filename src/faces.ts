@@ -111,6 +111,12 @@ export interface ProposeInterface {
   value: number;
 }
 
+export interface VoteActionInterface {
+  function: "vote";
+  id: string;
+  cast: string;
+}
+
 // FCP inputs
 
 export interface InvokeInterface {
