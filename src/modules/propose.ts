@@ -94,7 +94,7 @@ export default function Propose(
 
     if (input.lockLength) {
       ContractAssert(
-        Number.isInteger(input.lockLength) || !RESTRICT_TO_INTEGER,
+        Number.isInteger(input.lockLength),
         'Invalid value for "lockLength". Must be an integer'
       );
 
@@ -158,7 +158,7 @@ export default function Propose(
     );
     ContractAssert(
       input.key !== "lockMinLength" ||
-        ((Number.isInteger(input.value) || !RESTRICT_TO_INTEGER) &&
+        (Number.isInteger(input.value) &&
           input.value >= 1 &&
           input.value < settings.get("lockMaxLength")),
       "lockMinLength cannot be less than 1 and cannot be equal or greater than lockMaxLength"

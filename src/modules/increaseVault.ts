@@ -17,7 +17,7 @@ export default function IncreaseVault(
   const settings: Map<string, any> = new Map(state.settings);
 
   ContractAssert(
-    Number.isInteger(lockLength) || !RESTRICT_TO_INTEGER,
+    Number.isInteger(lockLength),
     'Invalid value for "lockLength". Must be an integer'
   );
 
