@@ -10,6 +10,7 @@ import Invoke from "./modules/invoke";
 import IncreaseVault from "./modules/increaseVault";
 import Unlock from "./modules/unlock";
 import VaultBalance from "./modules/vaultBalance";
+import Propose from "./modules/propose";
 
 export async function handle(state: StateInterface, action: ActionInterface) {
   // parse function
@@ -41,6 +42,9 @@ export async function handle(state: StateInterface, action: ActionInterface) {
     // vault
     case "vaultBalance":
       return { result: VaultBalance(state, action) };
+
+    case "propose":
+      return { state: Propose(state, action) };
 
     // FCP
     case "readOutbox":

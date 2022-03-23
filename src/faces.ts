@@ -99,6 +99,18 @@ export interface IncreaseVaultInterface {
 
 export interface VaultBalanceInterface extends BalanceInterface {}
 
+export interface ProposeInterface {
+  function: "propose";
+  note: string;
+  type: VoteType;
+  qty: number;
+  recipient: string;
+  target: string;
+  lockLength: number;
+  key: string;
+  value: number;
+}
+
 // FCP inputs
 
 export interface InvokeInterface {
