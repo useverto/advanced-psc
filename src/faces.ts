@@ -91,6 +91,12 @@ export interface LockInterface {
   lockLength: number;
 }
 
+export interface IncreaseVaultInterface {
+  function: "increaseVault";
+  id: string;
+  lockLength: number;
+}
+
 // FCP inputs
 
 export interface InvokeInterface {
